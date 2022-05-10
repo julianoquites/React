@@ -1,0 +1,10 @@
+.tweetfeed {
+  margin: auto;
+  resize: none;
+  width: 60%;
+  text-align:left;
+  background: #47a2f3;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}

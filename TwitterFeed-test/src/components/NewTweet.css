@@ -1,0 +1,23 @@
+.tweet {
+  text-align:left;
+  resize: none;
+  margin: auto;
+  width: 60%;
+  font-size: 16px;
+}
+.span {
+display:block
+}
+
+.button {
+  cursor: pointer;
+  background: #47a2f3;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  padding: 0.60rem 1rem;
+  border-radius: 20px;
+  margin: 1rem 0;
+}
+
+
