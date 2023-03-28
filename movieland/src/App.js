@@ -1,9 +1,10 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
 
 const API_URL = "http://www.omdbapi.com?apikey=cab58688";
+let wasPressed = false;
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -12,6 +13,7 @@ function App() {
   const handlePress = (e) => {
     if (e.key === "Enter") {
       searchMovies(searchTerm);
+      wasPressed = true
     }
   };
 
@@ -21,36 +23,34 @@ function App() {
     setMovies(data.Search);
   };
 
-  useEffect(() => {
-    searchMovies("Spiderman");
-  }, []);
-
   return (
-    <div className="app">
+    <div className='app'>
       <h1>MovieLand</h1>
 
-      <div className="search">
+      <div className='search'>
         <input
-          placeholder="Search for movies"
+          placeholder='Search for movies'
           value={searchTerm}
           onKeyDown={handlePress}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <img
           src={SearchIcon}
-          alt="search"
+          alt='search'
           onClick={() => searchMovies(searchTerm)}
         />
       </div>
-
-      {movies?.length > 0 ? (
-        <div className="container">
+      {wasPressed !== true ? 
+        <div className='empty'>
+        </div> :
+        movies?.length > 0 ? (
+        <div className='container'>
           {movies.map((movie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
         </div>
       ) : (
-        <div className="empty">
+        <div className='empty'>
           <h2>No movies found</h2>
         </div>
       )}
